@@ -26,6 +26,11 @@ def readRF():
 
 	# First In/First Out
 	# prints as [lsb][msb] NEED TO CONVERT
+	# Conversion Steps
+	# (AND operator to grab right 8 bits and move them left 8 places)
+	# (AND operator to grab left 8 bits and move them right by 8)
+	# Use an OR operator to replace zeroes between the two (It combines them)
+	# Subtract the MSB that the data sheet says are always HIGH (first 6) (10 bit ADC)
 	RF_combined = (((msg & 0xFF) << 8) | ((msg & 0xFF00) >> 8)) - 64512
 	# 2 Bytes: 6 are high | Then MSB to LSB consecutively
 	
